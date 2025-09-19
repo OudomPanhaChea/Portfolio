@@ -41,9 +41,7 @@ const Navbar = () => {
 
         {/* mobile */}
         <div className='w-full px-2 py-3 bg-primary flex md:hidden items-center justify-between'>
-          
-
-          <ul className='text-white w-full flex items-center justify-around text-sm'>
+          <ul className='text-white w-full flex items-center justify-around text-xs'>
             {ROUTES.map((route, i) => (
               <li key={i} className='w-[60px]'>
                 <NavLink 

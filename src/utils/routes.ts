@@ -14,11 +14,11 @@ interface RoutesType {
 }
 
 const ROUTES: RoutesType[] = [
-  { label: "Home", link: "/", icon: HiOutlineHome, fillIcon: HiHome, iconSize: 22 },
-  { label: "About", link: "#about", icon: FaRegUser, fillIcon: FaUser, iconSize: 20 },
-  { label: "Projects", link: "#projects", icon: RiFolderLine, fillIcon: RiFolderFill, iconSize: 21 },
-  { label: "Skills", link: "#skills", icon: GiSkills, fillIcon: GiSkills, iconSize: 21 },
-  { label: "Contact", link: "#contact", icon: MdOutlineEmail, fillIcon: MdEmail, iconSize: 22 },
+  { label: "Home", link: "/", icon: HiOutlineHome, fillIcon: HiHome, iconSize: 18 },
+  { label: "About", link: "#about", icon: FaRegUser, fillIcon: FaUser, iconSize: 16 },
+  { label: "Projects", link: "#projects", icon: RiFolderLine, fillIcon: RiFolderFill, iconSize: 17 },
+  { label: "Skills", link: "#skills", icon: GiSkills, fillIcon: GiSkills, iconSize: 17 },
+  { label: "Contact", link: "#contact", icon: MdOutlineEmail, fillIcon: MdEmail, iconSize: 18 },
 ];
 
 export default ROUTES

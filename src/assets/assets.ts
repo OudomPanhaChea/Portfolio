@@ -3,5 +3,5 @@ import Profile from './profile.png'
 
 export const assets = {
   Logo,
-  Profile
+  Profile,
 }

@@ -15,3 +15,15 @@ html {
   --color-primary-dull: #3b3c3f;
   --color-secondary: #7ecbe0;
 }
+
+.corner-only {
+  --s: 8px;
+  border: 2px solid #28282bd9; 
+  border-radius: 2px;
+  padding: 2px 10px;
+  background: transparent content-box;
+  mask: 
+    conic-gradient(#000 0 0) content-box,
+    conic-gradient(at var(--s) var(--s),#0000 75%,#000 0) 
+    0 0/calc(100% - var(--s)) calc(100% - var(--s));
+}
