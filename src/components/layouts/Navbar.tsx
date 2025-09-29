@@ -2,14 +2,40 @@ import { NavLink } from 'react-router-dom'
 import { assets } from '../../assets/assets'
 import ROUTES from '../../utils/routes'
 import { useState } from 'react'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 const Navbar = () => {
   const [active, setActive] = useState<string>('/');
+
+  useGSAP(() => {
+    gsap.from('.navbar', {
+      width: '0',
+      height: 40,
+      opacity: 0,
+      ease: 'power1.in',
+      duration: 0.6,
+    });
+
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: '.navbar',
+        start: 'top top',
+        end: '420% top',
+        scrub: true,
+        markers: true
+      }
+    }).from('.navbar', {
+      backgroundColor: '#28282b',
+      ease: 'power1.inOut',
+      duration: 1,
+    })
+  });
 
   return (
     <>
       <div className="w-full md:container mx-auto fixed bottom-0 md:bottom-auto md:top-3 xl:top-4 left-[50%] translate-x-[-50%] z-50 flex justify-center">
         {/* desktop */} 
-        <div className='w-full sm:w-[90%] md:w-[80%] lg:w-[70%] xl:w-[60%] 2xl:w-[55%] mx-2 p-2 lg:mx-4 bg-primary rounded-full hidden md:flex items-center justify-between'>
+        <div id='navbar' className='navbar w-full sm:w-[90%] md:w-[80%] lg:w-[70%] xl:w-[60%] 2xl:w-[55%] mx-2 p-2 lg:mx-4 bg-primary/80 backdrop-blur-sm rounded-full hidden md:flex items-center justify-between'>
           <NavLink to={'/'} className='ml-8'>
             <img src={assets.Logo} className='w-[24px] lg:w-[28px]' alt="logo" />
           </NavLink>
@@ -64,7 +90,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="container mx-auto fixed top-3 left-[50%] translate-x-[-50%] z-50 md:hidden block">
+      <div className="navbar container mx-auto fixed top-3 left-[50%] translate-x-[-50%] z-50 md:hidden block">
         <NavLink to={'/'} className='ml-3 bg-primary w-[60px] h-[60px] flex items-center justify-center rounded-full'>
           <img src={assets.Logo} className='w-[24px]' alt="logo" />
         </NavLink>
