@@ -1,21 +1,26 @@
 import { useGSAP } from "@gsap/react";
-import { assets } from "../assets/assets";
-import FlipText from "../components/FlipText";
+import { assets } from "../../assets/assets";
+import FlipText from "../molecules/FlipText";
 import gsap from "gsap";
 import { LuBrain, LuLightbulb } from "react-icons/lu";
-import type { IconType } from "react-icons";
+import { RiCodeSSlashLine } from "react-icons/ri";
+import { FaUsers } from "react-icons/fa";
+import ContentCard from "../molecules/ContentCard";
 
 const LandingSection = () => {
   const WORDS = ["web developer", "frontend developer", "backend developer"];
 
   useGSAP(() => {
-    gsap.from("#hero h1, #hero p, #hero button", {
-      y: 100,
-      x: -50,
-      opacity: 0,
-      ease: "power1.inOut",
-      stagger: 0.1,
-    });
+    gsap.from(
+      "#hero h1, #hero #text p, #hero #sub-heading, #hero button, #hero #content1, #hero #content2",
+      {
+        y: 100,
+        x: -50,
+        opacity: 0,
+        ease: "power1.inOut",
+        stagger: 0.1,
+      }
+    );
 
     const tl = gsap.timeline();
 
@@ -37,6 +42,42 @@ const LandingSection = () => {
         ease: "power1.inOut",
       });
 
+    const tl2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#content-card",
+        start: () => window.innerWidth < 640 ? "10% 40%" : "top center",
+        end: () => window.innerWidth < 640 ? "60% 30%" : "60% 30%",
+        scrub: true,
+      },
+    });
+
+    tl2
+      .fromTo(
+        "#content1 #first",
+        { y: 0, opacity: 1 },
+        { y: "-100%", opacity: 0, ease: "none" }
+      )
+      .fromTo(
+        "#content1 #sec",
+        { y: "0", opacity: 0 },
+        { y: "-100%", opacity: 1, ease: "none" },
+        "<"
+      );
+
+    tl2
+      .fromTo(
+        "#content2 #first",
+        { y: "-100%", opacity: 0 },
+        { y: "0", opacity: 1, ease: "none" },
+        "<"
+      )
+      .fromTo(
+        "#content2 #sec",
+        { y: "-100%", opacity: 1 },
+        { y: "0", opacity: 0, ease: "none" },
+        "<"
+      );
+
     gsap.utils.toArray<HTMLElement>(".float").forEach((el) => {
       gsap.to(el, {
         y: gsap.utils.random(-30, -10),
@@ -47,7 +88,7 @@ const LandingSection = () => {
         ease: "sine.inOut",
       });
     });
-  });
+  }, []);
 
   return (
     <section
@@ -74,7 +115,7 @@ const LandingSection = () => {
         <div className="px-4 mt-42 sm:mt-32 lg:mt-0 relative z-10 flex flex-col-reverse lg:flex-row gap-12 lg:gap-0 items-center justify-center lg:justify-between min-h-screen">
           {/* left */}
           <div className="w-full lg:mt-32 space-y-3 xl:space-y-5 2xl:space-y-5 flex flex-col items-center lg:items-start">
-            <div className="flex items-end gap-1 xl:gap-2">
+            <div id="text" className="flex items-end gap-1 xl:gap-2">
               <h1
                 id="greet"
                 className="text-4xl xl:text-5xl 2xl:text-6xl font-bold text-primary"
@@ -89,40 +130,59 @@ const LandingSection = () => {
               </p>
             </div>
             <FlipText words={WORDS} />
-            <p className="text-base xl:text-lg text-primary/80 mb-8 leading-relaxed">
+            <p
+              id="sub-heading"
+              className="text-base xl:text-lg text-primary/80 mb-8 leading-relaxed"
+            >
               A clean and minimalistic portfilio website.
             </p>
             {/* buttons */}
             <div className="flex items-center gap-4">
               <button className="cursor-pointer bg-primary border-1 border-primary rounded-full text-sm overflow-hidden lg:text-base text-white hover:bg-primary-dull transition-colors font-medium">
-                <a href="" className="px-6 lg:px-8 py-3 lg:py-4 block">
+                <a
+                  href={assets.CV}
+                  download
+                  className="px-6 lg:px-8 py-3 lg:py-4 block"
+                >
                   Download CV
                 </a>
               </button>
-              <button className="overflow-hidden cursor-pointer border-1 border-primary bg-white text-primary rounded-full hover:bg-primary hover:text-white transition-colors font-medium">
+              <button className="overflow-hidden cursor-pointer border-1 border-primary text-sm lg:text-base bg-white text-primary rounded-full hover:bg-primary hover:text-white transition-colors font-medium">
                 <a href="" className="px-6 lg:px-8 py-3 lg:py-4 block">
                   Explore Web
                 </a>
               </button>
             </div>
 
-            <div className="w-full md:w-[110%] xl:w-full pt-28 sm:pt-32 lg:pt-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 xl:gap-6 max-w-2xl mx-auto lg:mx-0">
+            <div id="content-card" className="w-full md:w-[110%] xl:w-full pt-28 sm:pt-32 lg:pt-4">
+              <div className="flex items-stretch bg-white gap-4 md:gap-5 xl:gap-6 max-w-2xl mx-auto lg:mx-0">
                 {/* Creativity Card */}
-                <ContentCard
-                  title="Creativity"
-                  subtitle="Bringing Ideas to Life"
-                  description="I mix design and code to craft projects that feel fresh and fun."
-                  Icon={LuBrain}
-                />
+                <div id="content1" className="w-1/2">
+                  <ContentCard
+                    title="Creativity"
+                    subtitle="Bringing Ideas to Life"
+                    description="I mix design and code to craft projects that feel fresh and fun."
+                    Icon={LuBrain}
+                    title2="Precision"
+                    subtitle2="Clean Code"
+                    description2="I write clean code that keeps projects smooth and reliable."
+                    Icon2={RiCodeSSlashLine}
+                  />
+                </div>
 
                 {/* Innovation Card */}
-                <ContentCard
-                  title="Innovation"
-                  subtitle="Fresh Ideas"
-                  description="Always exploring new ways to solve challenges."
-                  Icon={LuLightbulb}
-                />
+                <div id="content2" className="w-1/2">
+                  <ContentCard
+                    title="Innovation"
+                    subtitle="Fresh Ideas"
+                    description="Always exploring new ways to solve challenges."
+                    Icon={LuLightbulb}
+                    title2="Collaboration"
+                    subtitle2="Working Together"
+                    description2="I value teamwork to turn great ideas into reality."
+                    Icon2={FaUsers}
+                  />
+                </div>
               </div>
             </div>
 
@@ -163,33 +223,6 @@ const LandingSection = () => {
         </div>
       </div>
     </section>
-  );
-};
-
-const ContentCard = ({
-  title,
-  subtitle,
-  description,
-  Icon
-}: {
-  title: string;
-  subtitle: string;
-  description: string;
-  Icon: IconType
-}) => {
-  return (
-    <div className="p-4 md:p-5 lg:p-6 space-y-3 text-primary border-2 border-primary/10 bg-white rounded-xl lg:rounded-2xl hover:shadow-sm transition-shadow cursor-default">
-      <div className="flex items-center gap-3">
-        <Icon className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
-        <h4 className="text-xs sm:text-sm font-medium corner-only">{title}</h4>
-      </div>
-      <h3 className="text-sm md:text-base xl:text-lg font-semibold text-primary">
-        {subtitle}
-      </h3>
-      <p className="text-primary/70 text-xs md:text-sm xl:text-base leading-relaxed">
-        {description}
-      </p>
-    </div>
   );
 };
 

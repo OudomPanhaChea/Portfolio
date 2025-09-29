@@ -1,5 +1,5 @@
-import AboutSection from "../components/AboutSection"
-import LandingSection from "../components/LandingSection"
+import AboutSection from "../components/organisms/AboutSection"
+import LandingSection from "../components/organisms/LandingSection"
 
 const HomePage = () => {
   
