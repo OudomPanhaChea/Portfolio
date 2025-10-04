@@ -126,7 +126,7 @@ const LandingSection = () => {
                 id="name"
                 className="text-base xl:text-lg text-primary/80 mb-0.5"
               >
-                I am Chea Oudompanha
+                I am a
               </p>
             </div>
             <FlipText words={WORDS} />

@@ -22,7 +22,6 @@ const Navbar = () => {
         start: 'top top',
         end: '420% top',
         scrub: true,
-        markers: true
       }
     }).from('.navbar', {
       backgroundColor: '#28282b',
