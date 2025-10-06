@@ -1,5 +1,6 @@
 import AboutSection from "../components/organisms/AboutSection"
 import LandingSection from "../components/organisms/LandingSection"
+import ProjectSection from "../components/organisms/ProjectSection"
 
 const HomePage = () => {
   
@@ -7,6 +8,7 @@ const HomePage = () => {
     <>
       <LandingSection />
       <AboutSection />
+      <ProjectSection />
     </>
   )
 }
