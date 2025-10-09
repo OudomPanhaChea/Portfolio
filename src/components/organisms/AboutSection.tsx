@@ -1,7 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import { assets } from "../../assets/assets";
 import HeadingText from "../molecules/HeadingText";
-import { SplitText } from "gsap/all";
 import gsap from "gsap";
 
 const AboutSection = () => {
@@ -9,17 +8,51 @@ const AboutSection = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: "#about",
-        scrub: true,
-        markers: true,
-        start: "top top",
-        end: "bottom bottom",
+        start: "top 80%",
+        end: "20% 20%",
+        scrub: 0.5,
       },
     });
+
+    tl.from("#about #heading, #about #description, #about #pic-n-name", {
+      y: 200,
+      opacity: 0,
+      duration: 0.5,
+      stagger: 0.2,
+    });
+
+    const tl2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#about",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 0.5,
+      },
+    });
+
+    tl2.from('#about .name',{
+      x: 150,
+      y: 150,
+    }).to("#name-fill .chea, #name-stroke .chea", {
+      x: -50,
+      ease: "none",
+    }, '<').to("#name-fill .oudom, #name-stroke .oudom", {
+      x: 50,
+      ease: "none",
+    }, "<")
+    .to("#name-fill .panha, #name-stroke .panha", {
+      x: -30,
+      ease: "none",
+    },"<")
+    .to('#pfp', {
+      x: 50,
+      ease: "none",
+    }, "<");
   });
 
   return (
     <section
-      id="#about"
+      id="about"
       className="relative min-h-screen bg-white overflow-hidden"
     >
       <div className="px-6 md:px-16 lg:px-24 xl:px-32 py-18">
@@ -35,22 +68,51 @@ const AboutSection = () => {
           />
 
           <div>
-            <div className="relative flex-center h-52 md:h-64 lg:h-64 xl:h-72 mt-20">
+            <div
+              id="pic-n-name"
+              className="relative flex-center h-52 md:h-64 lg:h-64 xl:h-72 mt-20"
+            >
               <div className="absolute-y-center z-2">
-                <div className="aspect-16/10 h-52 md:h-64 lg:h-60 xl:h-72 relative rounded-lg overflow-hidden ml-12">
-                  <img src={assets.PFP} alt="pfp" className="-mt-22 lg:-mt-26 xl:-mt-32" />
-                  <div className="w-full h-full absolute top-0 bg-gradient-to-t from-primary/20 to-transparent" />
+                <div
+                  id="pfp"
+                  className="aspect-16/10 h-52 md:h-64 lg:h-60 xl:h-72 relative rounded-lg overflow-hidden ml-12"
+                >
+                  <img
+                    src={assets.PFP}
+                    alt="pfp"
+                    className="-mt-22 lg:-mt-26 xl:-mt-32"
+                  />
+                  <div className="w-full h-full absolute top-0 bg-gradient-to-t from-primary/80 to-transparent" />
                 </div>
               </div>
-              <h1 className="text-8xl sm:text-[7rem] md:text-[8rem] lg:text-[9rem] xl:text-[11rem] text-primary leading-18 sm:leading-20 md:leading-24 lg:leading-26 xl:leading-32 font-bold uppercase absolute-y-center [transform:scaleY(1.3)]">
-                <span className="!font-[Alpino]">Chea</span><span>{' '}</span>
-                <span className="!font-[Alpino] text-[5rem] sm:text-[6rem] md:text-[8rem] lg:text-[9rem] xl:text-[11rem] mr-8 lg:ml-0">oudom</span><span className="lg:hidden">{' '}</span>
-                <span className="!font-[Alpino]">panha</span>
+
+              <h1
+                id="name-fill"
+                className="name flex flex-col lg:inline-block w-full lg:w-fit text-8xl sm:text-[7rem] md:text-[8rem] lg:text-[9rem] xl:text-[11rem] text-primary leading-18 sm:leading-20 md:leading-24 lg:leading-26 xl:leading-32 font-bold uppercase absolute-y-center [transform:scaleY(1.3)]"
+              >
+                <span className="!font-[Sentient] chea">Chea</span>
+                <span> </span>
+                <span className="!font-[Sentient] oudom text-center lg:text-start text-[5rem] sm:text-[6rem] md:text-[8rem] lg:text-[9rem] xl:text-[12rem] mr-8 lg:ml-0">
+                  oudom
+                </span>
+                <span className="lg:hidden"> </span>
+                <span className="!font-[Sentient] panha text-end lg:text-start md:text-[8rem] lg:text-[9rem] xl:text-[12rem]">
+                  panha
+                </span>
               </h1>
-              <h1 className="text-8xl sm:text-[7rem] md:text-[8rem] lg:text-[9rem] xl:text-[11rem] font-bold uppercase leading-18 sm:leading-20 md:leading-24 lg:leading-26 xl:leading-32 text-stroke text-transparent absolute-y-center z-3 [transform:scaleY(1.3)]">
-                <span className="!font-[Alpino]">Chea</span><span>{' '}</span>
-                <span className="!font-[Alpino] text-[5rem] sm:text-[6rem] md:text-[8rem] lg:text-[9rem] xl:text-[11rem] mr-8 lg:ml-0">oudom</span><span className="lg:hidden">{' '}</span>
-                <span className="!font-[Alpino]">panha</span>
+              <h1
+                id="name-stroke"
+                className="name flex flex-col lg:inline-block w-full lg:w-fit text-8xl sm:text-[7rem] md:text-[8rem] lg:text-[9rem] xl:text-[11rem] font-bold uppercase leading-18 sm:leading-20 md:leading-24 lg:leading-26 xl:leading-32 text-stroke text-transparent absolute-y-center z-3 [transform:scaleY(1.3)]"
+              >
+                <span className="!font-[Sentient] chea">Chea</span>
+                <span> </span>
+                <span className="!font-[Sentient] oudom text-center lg:text-start text-[5rem] sm:text-[6rem] md:text-[8rem] lg:text-[9rem] xl:text-[12rem] mr-8 lg:ml-0">
+                  oudom
+                </span>
+                <span className="lg:hidden"> </span>
+                <span className="!font-[Sentient] panha text-end lg:text-start md:text-[8rem] lg:text-[9rem] xl:text-[12rem]">
+                  panha
+                </span>
               </h1>
             </div>
 

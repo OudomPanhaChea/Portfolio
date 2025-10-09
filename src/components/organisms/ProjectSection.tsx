@@ -2,7 +2,7 @@
 const ProjectSection = () => {
   return (
     <section
-      id="#projects"
+      id="projects"
       className="relative min-h-screen bg-white overflow-hidden"
     >
 

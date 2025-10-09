@@ -47,7 +47,7 @@ const LandingSection = () => {
         trigger: "#content-card",
         start: () => window.innerWidth < 640 ? "10% 40%" : "top center",
         end: () => window.innerWidth < 640 ? "60% 30%" : "60% 30%",
-        scrub: true,
+        scrub: 0.5,
       },
     });
 

@@ -14,7 +14,6 @@ html {
   --color-primary: #28282b;
   --color-primary-dull: #3b3c3f;
   --color-secondary: #7ecbe0;
-  --font-display: 'alpino', sans-serif;
 }
 
 .corner-only {
@@ -37,6 +36,13 @@ html {
   font-family: 'Alpino';
   src: url('./assets/fonts/Alpino-Bold.ttf') format('truetype');
   font-weight: 700;
+  font-style: normal
+}
+
+@font-face {
+  font-family: 'Sentient';
+  src: url('./assets/fonts/Sentient-Medium.ttf') format('truetype');
+  font-weight: 600;
   font-style: normal
 }
 
