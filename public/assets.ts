@@ -19,6 +19,7 @@ import Git from './images/git.png'
 import Github from './images/github.png'
 import Docker from './images/docker.png'
 import KE from './images/KE-screenshot.png'
+import DigiInvitation from './images/digi-invitation.png'
 import Tinh from './images/tinh-screenshot.png'
 import Mojito from './images/mojito.png'
 import VectorProgrammer from './images/programmer vector.png'
@@ -29,6 +30,7 @@ export const assets = {
   CV: './images/cv.pdf',
   PFP,
   KE,
+  DigiInvitation,
   Tinh,
   Mojito,
   VectorProgrammer,

@@ -28,6 +28,12 @@ const ProjectsList: ProjectsProps[] = [
     image: assets.KE,
     link: 'https://kedigitalsolution.com',
     tech: ['NextJs', 'tailwind']
+  }, {
+    title: 'Engagement Digital Invitation',
+    description: 'A digital invitation letter which is a modern, elegent and easy way to invite your guests.',
+    image: assets.DigiInvitation,
+    link: 'https://liya-and-thearith-engagement-inv.vercel.app/',
+    tech: ['NextJs', 'tailwind', 'GSAP']
   },
 ];
 
