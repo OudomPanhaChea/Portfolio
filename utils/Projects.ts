@@ -32,8 +32,14 @@ const ProjectsList: ProjectsProps[] = [
     title: 'Engagement Digital Invitation',
     description: 'A digital invitation letter which is a modern, elegent and easy way to invite your guests.',
     image: assets.DigiInvitation,
-    link: 'https://liya-and-thearith-engagement-inv.vercel.app/',
+    link: 'https://liya-and-thearith-engagement-inv.vercel.app',
     tech: ['NextJs', 'tailwind', 'GSAP']
+  }, {
+    title: 'Bus Ticket Management System',
+    description: 'A modern system that manage bus ticket booking process.',
+    image: assets.BusTicket,
+    link: 'https://busticket.wuaze.com',
+    tech: ['HTML', 'tailwind', 'JavaScript', 'PHP']
   },
 ];
 

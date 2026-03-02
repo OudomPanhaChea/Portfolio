@@ -22,6 +22,7 @@ import KE from './images/KE-screenshot.png'
 import DigiInvitation from './images/digi-invitation.png'
 import Tinh from './images/tinh-screenshot.png'
 import Mojito from './images/mojito.png'
+import BusTicket from './images/busticket.png'
 import VectorProgrammer from './images/programmer vector.png'
 
 export const assets = {
@@ -33,6 +34,7 @@ export const assets = {
   DigiInvitation,
   Tinh,
   Mojito,
+  BusTicket,
   VectorProgrammer,
 }
 
